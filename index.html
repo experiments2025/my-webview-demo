@@ -1,22 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Experiments</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 100px;
-            background-color: #f9f9f9;
-        }
-        h1 {
-            color: #333;
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Crazy Experiment Zone</title>
+
+<style>
+    body {
+        margin: 0;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #ff0080, #ff8c00);
+        height: 100vh;
+        color: white;
+        text-align: center;
+    }
+
+    h1 {
+        margin-top: 40px;
+        font-size: 40px;
+        animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+        from { text-shadow: 0 0 10px yellow; }
+        to   { text-shadow: 0 0 25px cyan; }
+    }
+
+    #button {
+        padding: 15px 25px;
+        background: #222;
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        font-size: 20px;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: 0.2s;
+    }
+
+    #button:hover {
+        background: #444;
+        transform: scale(1.1);
+    }
+
+    #message {
+        margin-top: 30px;
+        font-size: 24px;
+        min-height: 40px;
+    }
+
+    .emoji {
+        position: absolute;
+        font-size: 40px;
+        animation: floatUp 5s linear infinite;
+        opacity: 0.8;
+    }
+
+    @keyframes floatUp {
+        0% { transform: translateY(100vh) rotate(0deg); }
+        100% { transform: translateY(-150px) rotate(360deg); }
+    }
+</style>
+
 </head>
 <body>
-    <h1>Welcome to my experiments</h1>
+
+<h1>💥 Welcome to the Crazy Experiment Zone 💥</h1>
+
+<button id="button">Click for Madness 🤪</button>
+<div id="message"></div>
+
+<script>
+// Crazy messages
+const messages = [
+    "Your phone is now 200% faster 🚀",
+    "You have unlocked Ultra Engineer Mode 👨‍💻",
+    "A wild bug appears… and disappears 🐞✨",
+    "Your next build will succeed on first try 😎",
+    "Coffee has been virtually injected ☕",
+    "You are now a JavaScript Ninja 🥷",
+    "Safari WebView trusts you now (just kidding) 😂"
+];
+
+// Sound effect (tiny beep)
+const beep = new Audio("https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg");
+
+// Button click behavior
+document.getElementById("button").onclick = () => {
+    const msg = messages[Math.floor(Math.random() * messages.length)];
+    document.getElementById("message").textContent = msg;
+    beep.play();
+};
+
+// Floating emojis generator
+function createEmoji() {
+    const emojiList = ["🔥", "🤪", "⚡", "🎉", "💣", "😂", "😎", "🤯"];
+    const emoji = document.createElement("div");
+    emoji.className = "emoji";
+    emoji.textContent = emojiList[Math.floor(Math.random() * emojiList.length)];
+    emoji.style.left = Math.random() * window.innerWidth + "px";
+    emoji.style.animationDuration = (3 + Math.random() * 5) + "s";
+    document.body.appendChild(emoji);
+
+    // Remove after animation
+    setTimeout(() => {
+        emoji.remove();
+    }, 6000);
+}
+
+setInterval(createEmoji, 600);
+</script>
+
 </body>
 </html>
