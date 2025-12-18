@@ -1,116 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Crazy Experiment Zone</title>
-
-<style>
-    body {
-        margin: 0;
-        overflow: hidden;
-        font-family: Arial, sans-serif;
-        background: linear-gradient(135deg, #ff0080, #ff8c00);
-        height: 100vh;
-        color: white;
-        text-align: center;
-    }
-
-    h1 {
-        margin-top: 40px;
-        font-size: 40px;
-        animation: glow 2s infinite alternate;
-    }
-
-    @keyframes glow {
-        from { text-shadow: 0 0 10px yellow; }
-        to   { text-shadow: 0 0 25px cyan; }
-    }
-
-    #button {
-        padding: 15px 25px;
-        background: #222;
-        color: #fff;
-        border: none;
-        border-radius: 10px;
-        font-size: 20px;
-        cursor: pointer;
-        margin-top: 20px;
-        transition: 0.2s;
-    }
-
-    #button:hover {
-        background: #444;
-        transform: scale(1.1);
-    }
-
-    #message {
-        margin-top: 30px;
-        font-size: 24px;
-        min-height: 40px;
-    }
-
-    .emoji {
-        position: absolute;
-        font-size: 40px;
-        animation: floatUp 5s linear infinite;
-        opacity: 0.8;
-    }
-
-    @keyframes floatUp {
-        0% { transform: translateY(100vh) rotate(0deg); }
-        100% { transform: translateY(-150px) rotate(360deg); }
-    }
-</style>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fancy Web</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<h1>💥 Welcome to the Crazy Experiment Zone 💥</h1>
+  <header class="hero">
+    <nav class="nav">
+      <div class="logo">⚡ FancyWeb</div>
+      <ul>
+        <li>Home</li>
+        <li>Features</li>
+        <li>Contact</li>
+      </ul>
+    </nav>
 
-<button id="button">Click for Madness 🤪</button>
-<div id="message"></div>
+    <div class="hero-content">
+      <h1>Build Stunning Experiences</h1>
+      <p>Modern • Fast • Beautiful</p>
+      <button onclick="scrollToFeatures()">Explore</button>
+    </div>
+  </header>
 
-<script>
-// Crazy messages
-const messages = [
-    "Your phone is now 200% faster 🚀",
-    "You have unlocked Ultra Engineer Mode 👨‍💻",
-    "A wild bug appears… and disappears 🐞✨",
-    "Your next build will succeed on first try 😎",
-    "Coffee has been virtually injected ☕",
-    "You are now a JavaScript Ninja 🥷",
-    "Safari WebView trusts you now (just kidding) 😂"
-];
+  <section id="features" class="features">
+    <div class="card">
+      <h3>🚀 Fast</h3>
+      <p>Optimized for performance.</p>
+    </div>
+    <div class="card">
+      <h3>🎨 Stylish</h3>
+      <p>Clean, modern UI design.</p>
+    </div>
+    <div class="card">
+      <h3>📱 Responsive</h3>
+      <p>Perfect on all devices.</p>
+    </div>
+  </section>
 
-// Sound effect (tiny beep)
-const beep = new Audio("https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg");
+  <footer>
+    <p>© 2025 FancyWeb</p>
+  </footer>
 
-// Button click behavior
-document.getElementById("button").onclick = () => {
-    const msg = messages[Math.floor(Math.random() * messages.length)];
-    document.getElementById("message").textContent = msg;
-    beep.play();
-};
-
-// Floating emojis generator
-function createEmoji() {
-    const emojiList = ["🔥", "🤪", "⚡", "🎉", "💣", "😂", "😎", "🤯"];
-    const emoji = document.createElement("div");
-    emoji.className = "emoji";
-    emoji.textContent = emojiList[Math.floor(Math.random() * emojiList.length)];
-    emoji.style.left = Math.random() * window.innerWidth + "px";
-    emoji.style.animationDuration = (3 + Math.random() * 5) + "s";
-    document.body.appendChild(emoji);
-
-    // Remove after animation
-    setTimeout(() => {
-        emoji.remove();
-    }, 6000);
-}
-
-setInterval(createEmoji, 600);
-</script>
-
+  <script src="script.js"></script>
 </body>
 </html>
